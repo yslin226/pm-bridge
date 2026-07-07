@@ -1,16 +1,16 @@
 # pm-bridge
 
-Claude Code plugin：工程師 ↔ PM 的雙向翻譯層。`/spec` 把 PM 需求轉成含驗收條件的技術規格；`/pm-doc` 把做完的工作轉成 PM 看得懂的交付文件，並回頭勾稽驗收條件。Phase 3 會加 GitHub Action 週報。
+Claude Code plugin：工程師 ↔ PM 的雙向翻譯層。`/pm-translate` 把 PM 需求轉成含驗收條件的技術規格；`/pm-deliver` 把做完的工作轉成 PM 看得懂的交付文件，並回頭勾稽驗收條件。Phase 3 會加 GitHub Action 週報。
 
 ## 專案結構
 
 ```
 .claude-plugin/plugin.json     # plugin manifest
 skills/
-  pm-doc/SKILL.md              # 交付文件產生器
-  pm-doc/templates/delivery-doc.md
-  spec/SKILL.md                # 需求→規格翻譯器
-  spec/templates/requirement-spec.md
+  pm-deliver/SKILL.md          # 交付文件產生器
+  pm-deliver/templates/delivery-doc.md
+  pm-translate/SKILL.md        # 需求→規格翻譯器
+  pm-translate/templates/requirement-spec.md
 docs/superpowers/specs/        # 本專案自己的設計文件
 ```
 
@@ -25,10 +25,10 @@ docs/superpowers/specs/        # 本專案自己的設計文件
 
 ## 測試
 
-手動測試：在任一測試 repo 裝本 plugin（`claude plugin install` 指向本地路徑或 marketplace），實跑 `/spec`、`/pm-doc`，檢查輸出是否嚴格符合範本。尚無自動化測試（Phase 3 後考慮以 headless `claude -p` 做煙霧測試）。
+手動測試：在任一測試 repo 裝本 plugin（`claude plugin install` 指向本地路徑或 marketplace），實跑 `/pm-translate`、`/pm-deliver`，檢查輸出是否嚴格符合範本。尚無自動化測試（Phase 3 後考慮以 headless `claude -p` 做煙霧測試）。
 
 ## Roadmap
 
-- Phase 1（現在）：/pm-doc
-- Phase 2：/spec + 兩者勾稽
+- Phase 1（已完成）：/pm-deliver
+- Phase 2（已完成）：/pm-translate + 兩者勾稽
 - Phase 3：GitHub Action 週報（掃 commits + docs/pm/ → 匯總，發 Slack/email/issue）

@@ -1,6 +1,6 @@
 ---
-name: pm-doc
-description: Use when the user has finished a feature, fix, or milestone and wants to explain the work to a PM, manager, or other non-technical stakeholder, or asks for a delivery document. Triggers on /pm-doc, "寫給 PM 的文件", "產交付文件", "跟 PM 說明這次做了什麼", "explain this work to my PM".
+name: pm-deliver
+description: Use when the user has finished a feature, fix, or milestone and wants to explain the work to a PM, manager, or other non-technical stakeholder, or asks for a delivery document. Triggers on /pm-deliver, "寫給 PM 的文件", "產交付文件", "跟 PM 說明這次做了什麼", "explain this work to my PM".
 ---
 
 # PM Delivery Document Generator

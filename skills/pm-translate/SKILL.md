@@ -1,11 +1,11 @@
 ---
-name: spec
-description: Use when the user receives a requirement from a PM, manager, or stakeholder and wants to clarify or formalize it before starting work. Triggers on /spec, "把這個需求轉成 spec", "PM 給了一個需求", "開工前整理需求", "turn this requirement into a spec".
+name: pm-translate
+description: Use when the user receives a requirement from a PM, manager, or stakeholder and wants to clarify or formalize it before starting work. Triggers on /pm-translate, "把這個需求轉成 spec", "PM 給了一個需求", "開工前整理需求", "turn this requirement into a spec".
 ---
 
 # Requirement-to-Spec Translator
 
-Turn a vague PM requirement into a document with three jobs: **force ambiguities to the surface before coding starts, define testable acceptance criteria both sides agree on, and leave a written record `/pm-doc` can cross-check at delivery time.**
+Turn a vague PM requirement into a document with three jobs: **force ambiguities to the surface before coding starts, define testable acceptance criteria both sides agree on, and leave a written record `/pm-deliver` can cross-check at delivery time.**
 
 All file paths below are relative to the repository where the user invoked this skill (the target project), NOT the plugin directory.
 
@@ -39,7 +39,7 @@ Write criteria as checkboxes, each one **independently verifiable by a non-engin
 - ❌ 「收藏功能運作正常」(not testable)
 - ❌ 「API 回傳 200」(not observable by PM)
 
-Every criterion here will be cross-checked by `/pm-doc` at delivery — do not include criteria that cannot be checked against code changes and manual testing.
+Every criterion here will be cross-checked by `/pm-deliver` at delivery — do not include criteria that cannot be checked against code changes and manual testing.
 
 ### 5. Fill the technical outline — outline, not design
 
@@ -49,11 +49,11 @@ Estimate (粗估) in ranges only (「2-4 天」), and state what the estimate ex
 
 ### 6. Produce the document
 
-Fill `templates/requirement-spec.md` (in this skill's directory) **exactly** — same sections, same order. Save to `docs/pm/requirements/<slug>.md` with `<slug>` a short kebab-case feature name; create directories as needed. Set status to `draft`. If the working branch is already known (current branch is a feature branch, or the user names one), fill 對應分支 now — it is the authoritative link `/pm-doc` uses for cross-checking.
+Fill `templates/requirement-spec.md` (in this skill's directory) **exactly** — same sections, same order. Save to `docs/pm/requirements/<slug>.md` with `<slug>` a short kebab-case feature name; create directories as needed. Set status to `draft`. If the working branch is already known (current branch is a feature branch, or the user names one), fill 對應分支 now — it is the authoritative link `/pm-deliver` uses for cross-checking.
 
 Then offer the user a ready-to-send message for the PM containing only 需求摘要 + 待釐清問題, phrased in plain non-technical language — this is the artifact they actually paste into Slack/Line.
 
-When the PM answers, the user re-runs `/spec` with the answers: update the spec in place, resolve questions into assumptions or criteria, and flip status to `confirmed` when 待釐清問題 is empty.
+When the PM answers, the user re-runs `/pm-translate` with the answers: update the spec in place, resolve questions into assumptions or criteria, and flip status to `confirmed` when 待釐清問題 is empty.
 
 ## Writing rules
 
