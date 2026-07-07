@@ -1,6 +1,6 @@
 ---
 name: spec
-description: Use when the user receives a requirement from a PM, manager, or stakeholder and wants it turned into a technical spec before starting work. Produces a fixed-template spec with testable acceptance criteria and a list of clarifying questions to send back to the PM, saved to docs/pm/requirements/. Triggers on /spec, "把這個需求轉成 spec", "PM 給了一個需求", "開工前整理需求", "turn this requirement into a spec".
+description: Use when the user receives a requirement from a PM, manager, or stakeholder and wants to clarify or formalize it before starting work. Triggers on /spec, "把這個需求轉成 spec", "PM 給了一個需求", "開工前整理需求", "turn this requirement into a spec".
 ---
 
 # Requirement-to-Spec Translator

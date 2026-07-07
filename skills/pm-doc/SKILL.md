@@ -1,6 +1,6 @@
 ---
 name: pm-doc
-description: Use when the user has finished a feature, fix, or milestone and wants a document that explains the work to a PM, manager, or other non-technical stakeholder. Reads the git diff, cross-checks acceptance criteria from docs/pm/requirements/, and produces a fixed-template, business-value-oriented delivery document in docs/pm/delivered/. Triggers on /pm-doc, "寫給 PM 的文件", "產交付文件", "跟 PM 說明這次做了什麼", "explain this work to my PM".
+description: Use when the user has finished a feature, fix, or milestone and wants to explain the work to a PM, manager, or other non-technical stakeholder, or asks for a delivery document. Triggers on /pm-doc, "寫給 PM 的文件", "產交付文件", "跟 PM 說明這次做了什麼", "explain this work to my PM".
 ---
 
 # PM Delivery Document Generator
