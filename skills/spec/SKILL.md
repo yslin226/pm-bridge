@@ -49,7 +49,7 @@ Estimate (粗估) in ranges only (「2-4 天」), and state what the estimate ex
 
 ### 6. Produce the document
 
-Fill `templates/requirement-spec.md` (in this skill's directory) **exactly** — same sections, same order. Save to `docs/pm/requirements/<slug>.md` with `<slug>` a short kebab-case feature name; create directories as needed. Set status to `draft`.
+Fill `templates/requirement-spec.md` (in this skill's directory) **exactly** — same sections, same order. Save to `docs/pm/requirements/<slug>.md` with `<slug>` a short kebab-case feature name; create directories as needed. Set status to `draft`. If the working branch is already known (current branch is a feature branch, or the user names one), fill 對應分支 now — it is the authoritative link `/pm-doc` uses for cross-checking.
 
 Then offer the user a ready-to-send message for the PM containing only 需求摘要 + 待釐清問題, phrased in plain non-technical language — this is the artifact they actually paste into Slack/Line.
 

@@ -42,6 +42,8 @@
 | 輸出語言 | 預設 zh-TW，可由目標 repo CLAUDE.md 覆寫 | 主要受眾台灣工程圈，但不鎖死 |
 | SKILL.md 語言 | 英文 | 社群慣例與觸發可靠度；輸出語言另行控制 |
 | 報告端形態 | GitHub Action（非 CLI、非 SaaS） | 零安裝、零主機；LLM 費用由使用者的 API key secret 承擔 |
+| spec↔交付對應 | 需求檔「對應分支」欄位為權威連結，模糊比對僅備援且需使用者確認 | 模糊比對在多需求並行時必出錯，勾稽是核心功能不可賭 |
+| 跨 agent 相容 | skill 與範本保持自包含（純 markdown、相對路徑、不依賴 Claude 專屬變數） | 為 Phase 4（npx 安裝器轉裝 Codex/Gemini 等）鋪路 |
 
 ## 4. 元件規格
 
@@ -94,4 +96,9 @@
 
 1. Phase 1（~1 週）：/pm-doc 可用、本地安裝驗證通過 → 可發佈
 2. Phase 2（~1 週）：/spec + 勾稽 → 更新 README、發佈 marketplace
-3. Phase 3（~2 週）：GitHub Action → 另立設計文件後實作
+3. Phase 3（數天，基於 claude-code-action）：GitHub Action → 另立設計文件後實作
+4. Phase 4（候選）：npx 安裝器，支援 Codex（AGENTS.md）、Gemini CLI 等其他 agent 轉裝
+
+## 9. 分支策略
+
+`main`（穩定、可發佈）+ `dev`（日常開發），feature 分支自 dev 切出、PR 回 dev，發佈時 dev → main。

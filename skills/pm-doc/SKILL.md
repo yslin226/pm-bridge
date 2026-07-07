@@ -34,7 +34,7 @@ Ignore pure refactors, formatting, and test-only changes when describing value �
 
 ### 3. Cross-check the requirement spec
 
-Look in `docs/pm/requirements/` for a spec matching this work. Match by, in order: branch name ↔ spec slug, commit message references, content similarity. 
+Look in `docs/pm/requirements/` for a spec matching this work. Match by, in order: the spec's 對應分支 field equal to the current branch (authoritative), branch name ↔ spec slug, commit message references, content similarity. If only fuzzy matching succeeded, confirm the match with the user before cross-checking, and write the branch name into the spec's 對應分支 field so future runs are deterministic. 
 
 - **Match found**: load its acceptance criteria (驗收條件). For each criterion, determine from the diff whether it is 完成 / 部分完成 / 未動工. Update the checkboxes in the requirement file itself and set its status field if all criteria pass.
 - **No match**: proceed without it, and note in the output that no requirement spec was linked. Never fabricate criteria.
