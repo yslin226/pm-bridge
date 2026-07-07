@@ -1,0 +1,19 @@
+{
+  "name": "pm-bridge",
+  "version": "0.1.0",
+  "description": "Bidirectional translation layer between engineers and PMs. /spec turns PM requirements into technical specs with acceptance criteria; /pm-doc turns finished work into PM-readable delivery documents cross-checked against those criteria.",
+  "author": {
+    "name": "yslin226",
+    "email": "yslin226@gmail.com"
+  },
+  "license": "MIT",
+  "keywords": [
+    "pm",
+    "product-manager",
+    "communication",
+    "delivery-report",
+    "spec",
+    "requirements",
+    "traditional-chinese"
+  ]
+}
