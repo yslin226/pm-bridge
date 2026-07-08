@@ -18,9 +18,12 @@ Follow these steps in order. Do not skip the cross-check step.
 Resolution order — take the first that applies:
 
 1. The user explicitly specified a range (commits, branch, PR, "today's work") — use it.
-2. The current branch differs from the default branch (`main`/`master`) — use `git diff <default>...HEAD` plus the branch's commit messages.
+2. A default branch (`main` or `master`) exists AND the current branch differs from it — use `git diff <default>...HEAD` plus the branch's commit messages.
 3. There are staged or uncommitted changes — use those.
-4. None of the above is decidable — ask the user ONE question offering the concrete options you found. Do not guess.
+4. No default branch exists, or the user is already on it (single-branch repo, or committing straight to `main`/`master`) — use the most recent commit(s) since the last `/pm-deliver` run, or if none is known, the last commit on the branch.
+5. None of the above is decidable — ask the user ONE question offering the concrete options you found. Do not guess.
+
+Before relying on step 2, verify the default branch actually exists (`git rev-parse --verify main` / `master`) — do not assume one is present.
 
 ### 2. Read the changes
 
@@ -51,6 +54,12 @@ Fill `templates/delivery-doc.md` (in this skill's directory) **exactly** — sam
 
 Save to `docs/pm/delivered/YYYY-MM-DD-<slug>.md` where `<slug>` is a short kebab-case feature name. Create directories as needed. Show the user the full document and where it was saved.
 
+After saving, remind the user (one line) that raw `.md` reads as plain text with visible `##`/`**` syntax — for sharing with a non-technical PM, open it in a Markdown preview instead (GitHub/GitLab web view, VS Code preview, `glow <file>`), or ask this skill to also produce an HTML version (see below).
+
+### 6. Optional: HTML export
+
+If the user asks for an HTML copy (or a PM has previously said the raw file "looks AI-written"), render the saved `.md` to a single self-contained HTML file next to it (same name, `.html` extension) using `pandoc <file>.md -o <file>.html --standalone --metadata title="<功能名稱>"` if `pandoc` is available; otherwise tell the user it is not installed rather than hand-rolling a converter. The HTML file is a **rendering of the Markdown, never a replacement for it** — the `.md` stays the source of truth `pm-deliver`/`pm-translate` cross-check against.
+
 ## Writing rules
 
 These rules exist because generic AI output is verbose, hype-flavored, and inconsistent. Violating them defeats the purpose of this skill.
@@ -65,6 +74,7 @@ These rules exist because generic AI output is verbose, hype-flavored, and incon
 - Technical terms allowed only when unavoidable, and each gets a one-phrase plain explanation in parentheses on first use.
 - No hype adjectives: 強大、大幅、顯著、完美、無縫 are banned unless backed by a number in the same sentence.
 - Banned filler phrases: 值得注意的是、總的來說、綜上所述、在當今…的時代、首先/其次/最後 as paragraph scaffolding.
+- Prefer everyday verbs over bureaucratic ones: 做了/改了/加了/修好了 over 進行了/予以/呈現/實現. Write as if explaining to a colleague over coffee, not filing a report.
 - Numbers only when real (from the diff, tests, or the user's answers).
 
 ## What NOT to do
